@@ -1,15 +1,7 @@
-var express = require('express');
-var app = express();
-
-app.set('view engine', 'ejs'); // Alterando o motor de views do express
-
-app.get('/', function(request, response){
-  response.send("<html><body>Send porrra no get</body></html>");
-});
-
-app.get('/teconologia', function(request, response){
-  response.send("<html><body>Noticias de tecnologia</body></html>");
-});
+var app = require('./config/server');
+var rotaHome = require('./app/routes/home')(app); // pode ser assim tbm rotaHome(app) depois do require
+var rotaNoticias = require('./app/routes/noticias');
+rotaNoticias(app);
 
 app.listen(3000, function () {
   console.log('Essa porra functiona');
